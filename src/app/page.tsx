@@ -84,6 +84,9 @@ export default function Home() {
 
       <div id="contact" className="max-w-3xl w-full mt-12 border-t border-gray-200 pt-6">
         <h2 className="text-2xl font-semibold mb-4 text-center">Précommander une œuvre</h2>
+        <p className="text-center italic text-sm text-gray-600 mb-4">
+          Chaque œuvre est une pièce unique (1:1). Aucune reproduction. Aucun double. Ce que vous recevez est ce qui existe, et c’est tout.
+        </p>
         <form
           action="https://formspree.io/f/xeogwvqb"
           method="POST"
