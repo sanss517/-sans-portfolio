@@ -23,7 +23,6 @@ type Slug = keyof typeof œuvres;
 export default function PageOeuvre() {
   const params = useParams();
   const slug = params.slug as Slug;
-
   const œuvre = œuvres[slug];
 
   if (!œuvre) {
