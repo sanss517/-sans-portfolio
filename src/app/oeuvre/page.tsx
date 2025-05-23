@@ -16,12 +16,13 @@ const œuvres = {
     citation: "La classe a été fermée. Ma pensée, jamais.",
     texte: "Ils ont retiré les livres, les mots, les fenêtres. Mais dans ce tableau, j’ai remis ce qu&apos;ils ne peuvent pas fermer : la mémoire et la pensée libre.",
   },
-  // Tu peux ajouter d'autres œuvres ici...
-};
+} as const; // 👈 Cette ligne corrige le problème
+
+type Slug = keyof typeof œuvres;
 
 export default function PageOeuvre() {
   const params = useParams();
-  const slug = params.slug as string;
+  const slug = params.slug as Slug; // 👈 Et on tape correctement ici
   const œuvre = œuvres[slug];
 
   if (!œuvre) {
