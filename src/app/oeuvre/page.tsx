@@ -1,0 +1,59 @@
+'use client';
+
+import { useParams } from 'next/navigation';
+
+const œuvres = {
+  'cellule-23': {
+    titre: "Cellule 23",
+    image: "/cellule23.jpg",
+    citation: "Je ne voulais pas mourir avec mes mots dedans.",
+    texte: "Dans Cellule 23, je n’ai peint ni les murs, ni les barreaux, mais ce qu’on m’a interdit de dire. Cette œuvre est un silence verrouillé par les autres.",
+  },
+  'ecole-fermee': {
+    titre: "École Fermée",
+    image: "/ecole-fermee.jpg",
+    citation: "La classe a été fermée. Ma pensée, jamais.",
+    texte: "Ils ont retiré les livres, les mots, les fenêtres. Mais dans ce tableau, j’ai remis ce qu’ils ne peuvent pas fermer : la mémoire et la pensée libre.",
+  },
+  // Tu peux ajouter les autres œuvres ici...
+};
+
+export default function PageOeuvre() {
+  const params = useParams();
+  const slug = params.slug as string;
+  const œuvre = œuvres[slug];
+
+  if (!œuvre) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p>Œuvre introuvable</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-white text-black font-sans p-6 flex flex-col items-center gap-4">
+      <img src={œuvre.image} alt={œuvre.titre} className="w-full max-w-2xl object-cover rounded" />
+      <h1 className="text-3xl font-bold text-center">{œuvre.titre}</h1>
+      <p className="italic text-center text-gray-600">&quot;{œuvre.citation}&quot;</p>
+      <p className="max-w-2xl text-lg leading-relaxed text-center mt-4">{œuvre.texte}</p>
+
+      <form
+        action="https://formspree.io/f/xeogwvqb"
+        method="POST"
+        className="mt-8 w-full max-w-md flex flex-col gap-4"
+      >
+        <input type="hidden" name="message" value={`Précommande : ${œuvre.titre}`} />
+        <input type="text" name="name" required placeholder="Votre nom" className="border p-2 rounded" />
+        <input type="email" name="email" required placeholder="Votre email" className="border p-2 rounded" />
+        <button type="submit" className="bg-black text-white py-2 rounded hover:bg-gray-800">
+          Précommander
+        </button>
+      </form>
+
+      <a href="/" className="mt-6 underline text-blue-500 hover:text-black">
+        ← Retour à l’accueil
+      </a>
+    </div>
+  );
+}
