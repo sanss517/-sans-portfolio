@@ -30,7 +30,7 @@ export default function Home() {
       <h1 className="text-4xl font-bold tracking-tight text-center">SANS</h1>
       <p className="text-xl text-center max-w-xl italic">Les toiles du silence</p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-7xl w-full mt-6">
         {œuvres.map((œuvre, index) => (
           <motion.div
             key={index}
