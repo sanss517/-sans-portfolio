@@ -30,6 +30,12 @@ export default function Home() {
     <div className="min-h-screen bg-white text-black font-sans p-4 flex flex-col items-center justify-center gap-8">
       <h1 className="text-4xl font-bold tracking-tight text-center">SANS</h1>
       <p className="text-xl text-center max-w-xl italic">Les toiles du silence</p>
+      <Link
+        href="/exposer"
+        className="text-sm mt-2 border border-black rounded-full px-4 py-2 hover:bg-black hover:text-white transition"
+      >
+        Exposer SANS
+      </Link>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 max-w-7xl w-full mt-6">
         {œuvres.map((œuvre, index) => (
