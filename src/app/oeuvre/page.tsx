@@ -16,19 +16,23 @@ const œuvres = {
     citation: "La classe a été fermée. Ma pensée, jamais.",
     texte: "Ils ont retiré les livres, les mots, les fenêtres. Mais dans ce tableau, j’ai remis ce qu&apos;ils ne peuvent pas fermer : la mémoire et la pensée libre.",
   },
-} as const; // 👈 Cette ligne corrige le problème
+} as const;
 
 type Slug = keyof typeof œuvres;
 
 export default function PageOeuvre() {
   const params = useParams();
-  const slug = params.slug as Slug; // 👈 Et on tape correctement ici
+  const slug = params.slug as Slug;
+
   const œuvre = œuvres[slug];
 
   if (!œuvre) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>Œuvre introuvable</p>
+      <div className="min-h-screen flex items-center justify-center text-center p-4">
+        <p className="text-xl font-semibold">Œuvre introuvable<br />Assure-toi que l’URL est correcte.</p>
+        <Link href="/" className="mt-6 underline text-blue-500 block">
+          ← Retour à l’accueil
+        </Link>
       </div>
     );
   }
