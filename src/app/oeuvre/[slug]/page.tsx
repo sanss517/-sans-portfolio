@@ -133,8 +133,8 @@ export default function PageOeuvre() {
     <div className="min-h-screen bg-white text-black font-sans p-6 flex flex-col items-center gap-4">
       <img src={œuvre.image} alt={œuvre.titre} className="w-full max-w-2xl object-cover rounded" />
       <h1 className="text-3xl font-bold text-center">{œuvre.titre}</h1>
-      <p className="text-sm text-gray-500 italic text-center">{œuvre.date}</p>
-      <p className="italic text-center text-gray-600">"{œuvre.citation}"</p>
+      <p className="text-md text-black font-medium text-center">{œuvre.date}</p>
+      <p className="italic text-center text-gray-600">&quot;{œuvre.citation}&quot;</p>
       <p className="max-w-2xl text-lg leading-relaxed text-center mt-4">{œuvre.texte}</p>
 
       <form
