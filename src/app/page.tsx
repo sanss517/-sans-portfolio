@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [showManifesto, setShowManifesto] = useState(false);
@@ -31,7 +32,14 @@ export default function Home() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full mt-6">
         {œuvres.map((œuvre, index) => (
-          <div key={index} className="shadow-xl rounded-2xl overflow-hidden bg-white border flex flex-col">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            className="shadow-xl rounded-2xl overflow-hidden bg-white border flex flex-col transform transition duration-300 hover:scale-105"
+          >
             <img src={œuvre.image} alt={œuvre.titre} className="w-full object-cover h-72" />
             <div className="p-4 flex flex-col gap-2 flex-1">
               <h2 className="text-xl font-semibold text-center">{œuvre.titre}</h2>
@@ -46,7 +54,7 @@ export default function Home() {
                 Précommander
               </button>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
