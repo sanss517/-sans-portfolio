@@ -8,21 +8,21 @@ export default function Home() {
   const [précommandeTitre, setPrécommandeTitre] = useState("");
 
   const œuvres = [
-    {
-      titre: "Cellule 23",
-      image: "/cellule23.jpg",
-      citation: "Je ne voulais pas mourir avec mes mots dedans.",
-    },
-    {
-      titre: "École Fermée",
-      image: "/ecole-fermee.jpg",
-      citation: "La classe a été fermée. Ma pensée, jamais.",
-    },
-    {
-      titre: "Silence des Rues",
-      image: "/silence-des-rues.jpg",
-      citation: "Même les murs ont oublié le bruit.",
-    },
+    { titre: "Cellule 23", image: "/cellule23.jpg", citation: "Je ne voulais pas mourir avec mes mots dedans." },
+    { titre: "École Fermée", image: "/ecole-fermee.jpg", citation: "La classe a été fermée. Ma pensée, jamais." },
+    { titre: "Silence des Rues", image: "/silence-des-rues.jpg", citation: "Même les murs ont oublié le bruit." },
+    { titre: "Chambre 7", image: "/chambre7.jpg", citation: "L’oubli est la couleur des murs." },
+    { titre: "Fenêtre Morte", image: "/fenetre-morte.jpg", citation: "Une ouverture sur rien." },
+    { titre: "Dossier 8", image: "/dossier8.jpg", citation: "On a classé ma vie dans une chemise sans nom." },
+    { titre: "Tableau Effacé", image: "/tableau-efface.jpg", citation: "Ce que j’avais à dire a été peint. Puis gratté." },
+    { titre: "Visage Flou", image: "/visage-flou.jpg", citation: "J’étais là, mais vous m’avez mal vu." },
+    { titre: "Silence Admis", image: "/silence-admis.jpg", citation: "Le silence est devenu ma réponse officielle." },
+    { titre: "Voix Blanche", image: "/voix-blanche.jpg", citation: "Je crie, mais le son tombe en poudre." },
+    { titre: "Archives Brûlées", image: "/archives-brulees.jpg", citation: "Ils ont brûlé les papiers. Pas les souvenirs." },
+    { titre: "Matelas Vide", image: "/matelas-vide.jpg", citation: "Un corps était là. L’histoire est partie." },
+    { titre: "Cour Sans Cloche", image: "/cour-sans-cloche.jpg", citation: "L’heure ne sonne plus. L’oubli a remplacé la récré." },
+    { titre: "Photo Tournée", image: "/photo-tournee.jpg", citation: "On a retourné la preuve contre le mur." },
+    { titre: "Lumière Muette", image: "/lumiere-muette.jpg", citation: "Même la lumière a baissé les yeux." },
   ];
 
   return (
@@ -30,14 +30,14 @@ export default function Home() {
       <h1 className="text-4xl font-bold tracking-tight text-center">SANS</h1>
       <p className="text-xl text-center max-w-xl italic">Les toiles du silence</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full mt-6">
         {œuvres.map((œuvre, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
+            transition={{ duration: 0.6, delay: index * 0.05 }}
             className="shadow-xl rounded-2xl overflow-hidden bg-white border flex flex-col transform transition duration-300 hover:scale-105"
           >
             <img src={œuvre.image} alt={œuvre.titre} className="w-full object-cover h-72" />
