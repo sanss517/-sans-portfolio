@@ -30,6 +30,42 @@ export default function Home() {
         </div>
       )}
 
+      <div className="max-w-3xl w-full mt-8 border-t border-gray-200 pt-6">
+        <h2 className="text-2xl font-semibold mb-4 text-center">Précommander une œuvre</h2>
+        <form
+          action="https://formspree.io/f/xeogwvqb"
+          method="POST"
+          className="flex flex-col gap-4"
+        >
+          <input
+            type="text"
+            name="name"
+            required
+            placeholder="Votre nom"
+            className="border p-2 rounded"
+          />
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Votre e-mail"
+            className="border p-2 rounded"
+          />
+          <textarea
+            name="message"
+            required
+            placeholder="Message ou œuvre désirée"
+            className="border p-2 rounded h-32"
+          />
+          <button
+            type="submit"
+            className="bg-black text-white py-2 rounded hover:bg-gray-800"
+          >
+            Envoyer la demande
+          </button>
+        </form>
+      </div>
+
       <footer className="mt-12 text-sm text-gray-400 text-center">
         © 2025 SANS — Tous droits réservés
       </footer>
