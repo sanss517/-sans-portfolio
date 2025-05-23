@@ -4,20 +4,55 @@ import { useState } from "react";
 
 export default function Home() {
   const [showManifesto, setShowManifesto] = useState(false);
+  const [précommandeTitre, setPrécommandeTitre] = useState("");
+
+  const œuvres = [
+    {
+      titre: "Cellule 23",
+      image: "/cellule23.jpg",
+      citation: "Je ne voulais pas mourir avec mes mots dedans.",
+    },
+    {
+      titre: "École Fermée",
+      image: "/ecole-fermee.jpg",
+      citation: "La classe a été fermée. Ma pensée, jamais.",
+    },
+    {
+      titre: "Silence des Rues",
+      image: "/silence-des-rues.jpg",
+      citation: "Même les murs ont oublié le bruit.",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white text-black font-sans p-4 flex flex-col items-center justify-center gap-8">
       <h1 className="text-4xl font-bold tracking-tight text-center">SANS</h1>
       <p className="text-xl text-center max-w-xl italic">Les toiles du silence</p>
 
-      <div className="w-full max-w-3xl shadow-xl rounded-2xl overflow-hidden">
-        <img src="/cellule23.jpg" alt="Cellule 23" className="w-full object-cover" />
-        <p className="mt-4 text-sm text-center text-gray-600 px-4">&quot;Je ne voulais pas mourir avec mes mots dedans.&quot; – Cellule 23</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full mt-6">
+        {œuvres.map((œuvre, index) => (
+          <div key={index} className="shadow-xl rounded-2xl overflow-hidden bg-white border flex flex-col">
+            <img src={œuvre.image} alt={œuvre.titre} className="w-full object-cover h-72" />
+            <div className="p-4 flex flex-col gap-2 flex-1">
+              <h2 className="text-xl font-semibold text-center">{œuvre.titre}</h2>
+              <p className="text-sm text-gray-600 text-center italic">&quot;{œuvre.citation}&quot;</p>
+              <button
+                onClick={() => {
+                  setPrécommandeTitre(œuvre.titre);
+                  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                }}
+                className="mt-4 border border-black rounded-full px-4 py-2 text-sm hover:bg-black hover:text-white transition mx-auto"
+              >
+                Précommander
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
 
       <button
         onClick={() => setShowManifesto((prev) => !prev)}
-        className="mt-4 px-4 py-2 rounded-full border border-black hover:bg-black hover:text-white transition"
+        className="mt-8 px-4 py-2 rounded-full border border-black hover:bg-black hover:text-white transition"
       >
         {showManifesto ? "Fermer le manifeste" : "Lire le manifeste"}
       </button>
@@ -30,7 +65,7 @@ export default function Home() {
         </div>
       )}
 
-      <div className="max-w-3xl w-full mt-8 border-t border-gray-200 pt-6">
+      <div className="max-w-3xl w-full mt-12 border-t border-gray-200 pt-6">
         <h2 className="text-2xl font-semibold mb-4 text-center">Précommander une œuvre</h2>
         <form
           action="https://formspree.io/f/xeogwvqb"
@@ -55,6 +90,8 @@ export default function Home() {
             name="message"
             required
             placeholder="Message ou œuvre désirée"
+            value={précommandeTitre}
+            onChange={(e) => setPrécommandeTitre(e.target.value)}
             className="border p-2 rounded h-32"
           />
           <button
