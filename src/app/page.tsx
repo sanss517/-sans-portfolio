@@ -2,27 +2,28 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Home() {
   const [showManifesto, setShowManifesto] = useState(false);
   const [précommandeTitre, setPrécommandeTitre] = useState("");
 
   const œuvres = [
-    { titre: "Cellule 23", image: "/cellule23.jpg", citation: "Je ne voulais pas mourir avec mes mots dedans." },
-    { titre: "École Fermée", image: "/ecole-fermee.jpg", citation: "La classe a été fermée. Ma pensée, jamais." },
-    { titre: "Silence des Rues", image: "/silence-des-rues.jpg", citation: "Même les murs ont oublié le bruit." },
-    { titre: "Chambre 7", image: "/chambre7.jpg", citation: "L’oubli est la couleur des murs." },
-    { titre: "Fenêtre Morte", image: "/fenetre-morte.jpg", citation: "Une ouverture sur rien." },
-    { titre: "Dossier 8", image: "/dossier8.jpg", citation: "On a classé ma vie dans une chemise sans nom." },
-    { titre: "Tableau Effacé", image: "/tableau-efface.jpg", citation: "Ce que j’avais à dire a été peint. Puis gratté." },
-    { titre: "Visage Flou", image: "/visage-flou.jpg", citation: "J’étais là, mais vous m’avez mal vu." },
-    { titre: "Silence Admis", image: "/silence-admis.jpg", citation: "Le silence est devenu ma réponse officielle." },
-    { titre: "Voix Blanche", image: "/voix-blanche.jpg", citation: "Je crie, mais le son tombe en poudre." },
-    { titre: "Archives Brûlées", image: "/archives-brulees.jpg", citation: "Ils ont brûlé les papiers. Pas les souvenirs." },
-    { titre: "Matelas Vide", image: "/matelas-vide.jpg", citation: "Un corps était là. L’histoire est partie." },
-    { titre: "Cour Sans Cloche", image: "/cour-sans-cloche.jpg", citation: "L’heure ne sonne plus. L’oubli a remplacé la récré." },
-    { titre: "Photo Tournée", image: "/photo-tournee.jpg", citation: "On a retourné la preuve contre le mur." },
-    { titre: "Lumière Muette", image: "/lumiere-muette.jpg", citation: "Même la lumière a baissé les yeux." },
+    { slug: "cellule-23", titre: "Cellule 23", image: "/cellule23.jpg", citation: "Je ne voulais pas mourir avec mes mots dedans." },
+    { slug: "ecole-fermee", titre: "École Fermée", image: "/ecole-fermee.jpg", citation: "La classe a été fermée. Ma pensée, jamais." },
+    { slug: "silence-des-rues", titre: "Silence des Rues", image: "/silence-des-rues.jpg", citation: "Même les murs ont oublié le bruit." },
+    { slug: "chambre-7", titre: "Chambre 7", image: "/chambre7.jpg", citation: "L’oubli est la couleur des murs." },
+    { slug: "fenetre-morte", titre: "Fenêtre Morte", image: "/fenetre-morte.jpg", citation: "Une ouverture sur rien." },
+    { slug: "dossier-8", titre: "Dossier 8", image: "/dossier8.jpg", citation: "On a classé ma vie dans une chemise sans nom." },
+    { slug: "tableau-efface", titre: "Tableau Effacé", image: "/tableau-efface.jpg", citation: "Ce que j’avais à dire a été peint. Puis gratté." },
+    { slug: "visage-flou", titre: "Visage Flou", image: "/visage-flou.jpg", citation: "J’étais là, mais vous m’avez mal vu." },
+    { slug: "silence-admis", titre: "Silence Admis", image: "/silence-admis.jpg", citation: "Le silence est devenu ma réponse officielle." },
+    { slug: "voix-blanche", titre: "Voix Blanche", image: "/voix-blanche.jpg", citation: "Je crie, mais le son tombe en poudre." },
+    { slug: "archives-brulees", titre: "Archives Brûlées", image: "/archives-brulees.jpg", citation: "Ils ont brûlé les papiers. Pas les souvenirs." },
+    { slug: "matelas-vide", titre: "Matelas Vide", image: "/matelas-vide.jpg", citation: "Un corps était là. L’histoire est partie." },
+    { slug: "cour-sans-cloche", titre: "Cour Sans Cloche", image: "/cour-sans-cloche.jpg", citation: "L’heure ne sonne plus. L’oubli a remplacé la récré." },
+    { slug: "photo-tournee", titre: "Photo Tournée", image: "/photo-tournee.jpg", citation: "On a retourné la preuve contre le mur." },
+    { slug: "lumiere-muette", titre: "Lumière Muette", image: "/lumiere-muette.jpg", citation: "Même la lumière a baissé les yeux." },
   ];
 
   return (
@@ -40,20 +41,22 @@ export default function Home() {
             transition={{ duration: 0.6, delay: index * 0.05 }}
             className="shadow-xl rounded-2xl overflow-hidden bg-white border flex flex-col transform transition duration-300 hover:scale-105"
           >
-            <img src={œuvre.image} alt={œuvre.titre} className="w-full object-cover h-72" />
-            <div className="p-4 flex flex-col gap-2 flex-1">
-              <h2 className="text-xl font-semibold text-center">{œuvre.titre}</h2>
-              <p className="text-sm text-gray-600 text-center italic">&quot;{œuvre.citation}&quot;</p>
-              <button
-                onClick={() => {
-                  setPrécommandeTitre(œuvre.titre);
-                  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                }}
-                className="mt-4 border border-black rounded-full px-4 py-2 text-sm hover:bg-black hover:text-white transition mx-auto"
-              >
-                Précommander
-              </button>
-            </div>
+            <Link href={`/oeuvre/${œuvre.slug}`} className="flex flex-col h-full">
+              <img src={œuvre.image} alt={œuvre.titre} className="w-full object-cover h-72" />
+              <div className="p-4 flex flex-col gap-2 flex-1">
+                <h2 className="text-xl font-semibold text-center">{œuvre.titre}</h2>
+                <p className="text-sm text-gray-600 text-center italic">&quot;{œuvre.citation}&quot;</p>
+              </div>
+            </Link>
+            <button
+              onClick={() => {
+                setPrécommandeTitre(œuvre.titre);
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+              }}
+              className="mb-4 border border-black rounded-full px-4 py-2 text-sm hover:bg-black hover:text-white transition mx-auto"
+            >
+              Précommander
+            </button>
           </motion.div>
         ))}
       </div>
@@ -73,7 +76,7 @@ export default function Home() {
         </div>
       )}
 
-      <div className="max-w-3xl w-full mt-12 border-t border-gray-200 pt-6">
+      <div id="contact" className="max-w-3xl w-full mt-12 border-t border-gray-200 pt-6">
         <h2 className="text-2xl font-semibold mb-4 text-center">Précommander une œuvre</h2>
         <form
           action="https://formspree.io/f/xeogwvqb"
