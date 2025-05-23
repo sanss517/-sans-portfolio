@@ -1,9 +1,11 @@
+import Link from 'next/link';
+
 export default function APropos() {
   return (
     <div className="min-h-screen bg-white text-black font-sans p-8 flex flex-col items-center justify-center gap-6">
       <h1 className="text-3xl font-bold text-center">À propos de SANS</h1>
       <p className="max-w-2xl text-center text-lg leading-relaxed">
-        SANS est le nom de ceux qu'on a effacés.  
+        SANS est le nom de ceux qu&apos;on a effacés.  
         Le nom de ceux qui n’ont pas eu le droit de signer.  
         Le nom qu’on inscrit quand on retire tout le reste.
       </p>
@@ -17,9 +19,9 @@ export default function APropos() {
         Une réponse blanche au bruit.
       </p>
 
-      <a href="/" className="mt-6 underline text-blue-500 hover:text-black">
+      <Link href="/" className="mt-6 underline text-blue-500 hover:text-black">
         ← Retour à l’accueil
-      </a>
+      </Link>
     </div>
   );
 }

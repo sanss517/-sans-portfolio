@@ -1,21 +1,22 @@
 'use client';
 
 import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
 const œuvres = {
   'cellule-23': {
     titre: "Cellule 23",
     image: "/cellule23.jpg",
     citation: "Je ne voulais pas mourir avec mes mots dedans.",
-    texte: "Dans Cellule 23, je n’ai peint ni les murs, ni les barreaux, mais ce qu’on m’a interdit de dire. Cette œuvre est un silence verrouillé par les autres.",
+    texte: "Dans Cellule 23, je n’ai peint ni les murs, ni les barreaux, mais ce qu&apos;on m&apos;a interdit de dire. Cette œuvre est un silence verrouillé par les autres.",
   },
   'ecole-fermee': {
     titre: "École Fermée",
     image: "/ecole-fermee.jpg",
     citation: "La classe a été fermée. Ma pensée, jamais.",
-    texte: "Ils ont retiré les livres, les mots, les fenêtres. Mais dans ce tableau, j’ai remis ce qu’ils ne peuvent pas fermer : la mémoire et la pensée libre.",
+    texte: "Ils ont retiré les livres, les mots, les fenêtres. Mais dans ce tableau, j’ai remis ce qu&apos;ils ne peuvent pas fermer : la mémoire et la pensée libre.",
   },
-  // Tu peux ajouter les autres œuvres ici...
+  // Tu peux ajouter d'autres œuvres ici...
 };
 
 export default function PageOeuvre() {
@@ -51,9 +52,9 @@ export default function PageOeuvre() {
         </button>
       </form>
 
-      <a href="/" className="mt-6 underline text-blue-500 hover:text-black">
+      <Link href="/" className="mt-6 underline text-blue-500 hover:text-black">
         ← Retour à l’accueil
-      </a>
+      </Link>
     </div>
   );
 }
