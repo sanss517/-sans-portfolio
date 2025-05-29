@@ -1,3 +1,7 @@
+'use client';
+
+import Link from 'next/link';
+
 export default function APropos() {
   return (
     <div className="min-h-screen bg-white text-black font-sans p-8 flex flex-col items-center justify-center gap-6">
@@ -19,9 +23,9 @@ export default function APropos() {
         Les œuvres ne cherchent pas à plaire, elles réclament d’exister.
         Chaque toile est un acte de résistance.
       </p>
-      <a href="/" className="mt-6 underline text-blue-500 hover:text-black">
+      <Link href="/" className="mt-6 underline text-blue-500 hover:text-black">
         ← Retour à l’accueil
-      </a>
+      </Link>
     </div>
   );
 }
