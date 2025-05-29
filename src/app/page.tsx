@@ -30,12 +30,19 @@ export default function Home() {
     <div className="min-h-screen bg-white text-black font-sans p-4 flex flex-col items-center justify-center gap-8">
       <h1 className="text-4xl font-bold tracking-tight text-center">SANS</h1>
       <p className="text-xl text-center max-w-xl italic">Les toiles du silence</p>
-      <Link
-        href="/exposer"
-        className="text-sm mt-2 border border-black rounded-full px-4 py-2 hover:bg-black hover:text-white transition"
-      >
-        Exposer SANS
-      </Link>
+
+      {/* Bloc d'information sur l’unicité des œuvres */}
+      <div className="max-w-4xl text-center border-t border-b py-6 text-lg leading-relaxed">
+        <p className="mb-2">
+          <strong>Les toiles de SANS ne sont pas des reproductions.</strong>
+        </p>
+        <p className="mb-2">
+          Chaque œuvre est <strong>unique</strong>, créée une seule fois. Il n’existe <strong>aucune copie</strong>.
+        </p>
+        <p className="italic text-gray-600">
+          Ce que vous voyez, c’est ce que vous pourriez détenir — une voix, un fragment de silence, une absence rendue visible.
+        </p>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 max-w-7xl w-full mt-6">
         {œuvres.map((œuvre, index) => (
@@ -84,9 +91,6 @@ export default function Home() {
 
       <div id="contact" className="max-w-3xl w-full mt-12 border-t border-gray-200 pt-6">
         <h2 className="text-2xl font-semibold mb-4 text-center">Précommander une œuvre</h2>
-        <p className="text-center italic text-sm text-gray-600 mb-4">
-          Chaque œuvre est une pièce unique (1:1). Aucune reproduction. Aucun double. Ce que vous recevez est ce qui existe, et c’est tout.
-        </p>
         <form
           action="https://formspree.io/f/xeogwvqb"
           method="POST"
